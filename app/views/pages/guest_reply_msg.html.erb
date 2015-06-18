@@ -1,0 +1,65 @@
+<!-- ページコンテンツ:この内容がページ部分にロードされます -->
+<div class="col-xs-12 page-cont">
+	<div class="navi-prev white-icon"></div>
+	<div class="row">
+		<div class="head">
+      <div class="title"><%= t('guestreply.title') %></div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-3">
+      <img class="sns-icon mid" src="<%= @from.image_url %>">
+		</div>
+    <div class="msg-head col-xs-9"><%= t('guestreply.replyto', name: @from.name) %></div>
+	</div>
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<textarea id="reply-msg-text" class="show-msg-body msg-body-reply">
+			</textarea>
+		</div>
+	</div>
+	<div class="row">
+		<div class="msg-action">
+      <a href="javascript:void(0)" id="send-reply-msg" type="buttom" class="btn btn-primary"><%= t('guestreply.send') %></a>
+		</div>
+	</div>
+
+</div>
+
+<input type="hidden" value="<%= t('sendmsg.success') %>" id="success_msg" />
+<input type="hidden" value="<%= t('sendmsg.fail') %>" id="fail_msg" />
+
+<!-- ページスクリプト -->
+<script type="text/javascript">
+	//必要なハンドラだけ実装して下さい
+	pages["guest-reply-msg"]	= {
+		onLoad		:	function(){
+      $("#send-reply-msg").click(function(){
+        console.log("called");
+        $.ajax({
+           type		:	"post"
+           ,data		:	{
+           "msg": $("#reply-msg-text").val(),
+           "_confessid" : app.base.fetchId()
+           }
+          ,url		:	"/api/reply"
+          ,error		:	function(XMLHttpRequest, textStatus, errorThrown){
+            console.log("failed to fetch api");
+          }
+          ,success	:	function(data){
+            console.log(data);
+            if (data.result == "ok") {
+              alert($("#success_msg").val());
+            } else if (data.result == "ng") {
+              alert($("#fail_msg").val() + data.msg);
+            }
+            app.base.showPage("guest-top");
+          }
+        });
+        return false;
+      });
+		}
+		,onShow		:	function(){}
+		,onLeave		:	function(formData){}
+	}
+</script>

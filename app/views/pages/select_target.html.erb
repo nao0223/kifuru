@@ -1,0 +1,72 @@
+<!-- ページコンテンツ:この内容がページ部分にロードされます -->
+<div class="col-xs-12 page-cont">
+    <div class="navi-prev white-icon"></div>
+    <div class="row">
+	    <div class="head">
+        <div class="title"><%= t('selecttarget.title') %></div>
+	    </div>
+	    <div class="sns">
+		    <img class="sns-icon mid" id="sns-img" src="img/stub/sns-you.png">
+	    </div>
+
+	    <div class="form-horizontal">
+		    <div class="form-group">
+			    <label for="select-target-id" class="col-xs-3 col-xs-offset-1 control-label">@</label>
+			    <div class="col-xs-7">
+				    <input id="select-target-id" value="" type="text" placeholder="Twitter ID" class="form-control" />
+			    </div>
+          <input type="button" id="twitter-search" class="search btn-primary" value="<%= t('selecttarget.search') %>" />
+		    </div>
+		    <div class="form-group">
+			    <label for="select-target-name" class="col-xs-3 col-xs-offset-1 control-label"><%= t('selecttarget.name') %></label>
+			    <div class="col-xs-7">
+				    <input id="select-target-name" value="" type="text" class="form-control" />
+			    </div>
+		    </div>
+	    </div>
+    </div>	
+    <input type="hidden" id="target-twi-id" />
+    <div id="loading" style="display: none">
+      <img src="/img/loading.gif" />
+    </div>
+    <div class="navi-next"></div>
+</div>
+
+<!-- ページスクリプト -->
+<script type="text/javascript">
+	//必要なハンドラだけ実装して下さい
+	pages["select-target"]	= {
+		 onLoad		:	function(){}
+		,onShow		:	function(){}
+		,onLeave		:	function(formData){
+			// ページ移動時にサーバに渡すデータ
+			formData["target_id"]		=  $("#select-target-id").val();
+			formData["target_provider"]		=  "twitter";
+			formData["target_name"]		=  $("#select-target-name").val();
+			formData["target_image"]		=  $("#sns-img").attr('src');
+			formData["target_twi_id"]		=  $("#target-twi-id").val();
+		}
+	}
+
+$('#twitter-search').click(function() {
+  $("#loading").show()
+  $.ajax({
+     type		:	"get"
+    ,data		:	null
+    ,url		:	"/api/twitter/" + $("#select-target-id").val()
+    ,error		:	function(XMLHttpRequest, textStatus, errorThrown){
+      console.log("failed to fetch api");
+      $("#loading").hide()
+    }
+    ,success	:	function(data){
+      $("#loading").hide()
+      console.log(data);
+      var timestamp = new Date().getTime();
+      $("#sns-img").attr("src", data.profile_image_url + '?' + timestamp)
+      $("#select-target-name").attr("value", data.name)  
+      $("#target-twi-id").val(data.id_str)
+    }
+  });
+
+});
+</script>

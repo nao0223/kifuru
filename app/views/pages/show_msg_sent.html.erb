@@ -1,0 +1,71 @@
+<!-- ページコンテンツ:この内容がページ部分にロードされます -->
+<div class="col-xs-12 page-cont">
+    <div class="navi-prev white-icon"></div>
+    <div class="row">
+	    <div class="head">
+        <div class="title"><%= t('showmsgsent.title') %></div>
+	    </div>
+	</div>
+	<div class="msg-cont">
+    <% @view_set.each do |v| %>
+      <% if v[:is_from] %>
+        <div class="row">
+          <div class="col-xs-9">
+            <div class="show-msg-body msg-body">
+              <p><%= v[:message].content %> </p>	
+            </div>
+          </div>
+          <div class="col-xs-3 icon-box">
+            <img class="sns-icon mid" src="<%= v[:user].image_url %>">
+          </div>
+        </div>
+
+      <% else %>
+	
+        <div class="row">
+          <% if current_user.id == @confess.user_id %>
+            <div class="msg-head"><%= t('showmsgsent.reply', name: v[:user].name) %></div>
+          <% end %>
+        </div>
+        <div class="row">
+          <div class="col-xs-3 icon-box">
+            <img class="sns-icon mid" src="<%= v[:user].image_url %>">
+          </div>
+          <div class="col-xs-9">
+            <div class="show-msg-body msg-body-reply">
+              <p><%= v[:message].content %> </p>	
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
+	</div>
+	
+	<div class="row">
+		<div class="msg-action">
+      <a href="javascript:alert('まだ');" type="buttom" class="btn btn-primary"><%= t('showmsgsent.tweetcon') %></a>
+			<a href="javascript:alert('まだ');" type="buttom" class="btn btn-default"><%= t('showmsgsent.tweet') %></a>
+		</div>
+	</div>
+	
+</div>
+
+<!-- ページスクリプト -->
+<script type="text/javascript">
+	//必要なハンドラだけ実装して下さい
+	pages["show-msg-sent"]	= {
+		 onLoad		:	function(){
+			//graphDemo.jsのグラフ表示メソッドをコール
+			//window.setTimeout(startLearn,800);
+		}
+		,onShow		:	function(){}
+		,onLeave		:	function(formData){}
+	}
+</script>
+
+<!-- モックアップ用グラフ -->
+<script src="/js/Chart.js"></script>
+<script src="http://code.createjs.com/createjs-2013.12.12.min.js"></script>
+<script src="/js/graphDemo.js"></script>
+

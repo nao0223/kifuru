@@ -1,0 +1,34 @@
+en:
+  sidebar:
+    send_msg:  'Send Message'
+    view_msg:  'View Message'
+    setting:   'Settings'
+  toppage:
+    title: 'Green de Love Confession'
+    subtitle: 'Change the earth by my will.'
+  selectpage:
+    title: 'What are you gonna tell?'
+    confess:
+      title: 'Confess'
+    sorry:
+      title: 'Apologize'
+    love: 'I love you!'
+    date: "Let's go out with me!"
+    propose: 'Please marry!' 
+    late: 'I will be late.'
+    forget: 'I forgot that..'
+  selecttarget:
+    title: 'Whom will you tell?'
+    name: 'Name'
+    search: 'Search'
+  createmsg:
+    title: 'Select Message'
+    casual: 'Casual'
+    serious: 'Serious'
+  sendmsg:
+    title: 'Contribute and tell!'
+    msg: 'I love you, %{name}!!'
+    sub: 'Send DM to @%{screen_name} by clicking.'
+    success: 'Sent the DM.'
+    fail: 'Failed to send the DM.. Cause：'
+

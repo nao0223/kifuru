@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<title>kifuru - 俺と地球を救うメッセージアプリ</title>
+		<!-- 共通要素のロード：最終的にテンプレートで埋め込むようにしてください -->
+		<script type="text/javascript" src="/include/head.js"></script>
+  </head>
+	
+  <body class="bg">
+    <div class="container">
+
+  <% if current_user %>
+		<div class="wrapper"></div>
+		<section id="sidebar" class="sidebar"></section>
+		<div id="sidebar-opener" class="menu-icon menu-button menu-left"></div>
+  <% end %>
+		
+		<!-- トップ -->
+		<div class="row page" id="guest-top"></div>
+
+		<!-- メッセージ表示 -->
+		<div class="row page" id="guest-show-msg"></div>
+
+		<!-- メッセージに返信 -->
+		<div class="row page" id="guest-reply-msg"></div>
+
+    </div>
+
+		<!-- 共通要素のロード：最終的にテンプレートで埋め込むようにしてください -->
+		<script type="text/javascript" src="/include/body-last.js"></script>
+
+
+  </body>
+</html>

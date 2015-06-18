@@ -1,0 +1,19 @@
+<!-- ページコンテンツ -->
+<div class="col-xs-12 page-cont-nobg page-cont-top">
+	<div class="notice-newmsg">
+    <!-- TODO 動的にする -->
+    <img class="sns-icon mid" src="<%= @from.image_url %>" /><br />
+    <%= t('guesttop.msg', from: @from.name, to: @to.name) %>
+	</div>
+</div>
+<div class="navi-next"></div>
+
+<!-- ページスクリプト -->
+<script type="text/javascript">
+	//必要なハンドラだけ実装して下さい
+	pages["guest-top"]	= {
+		 onLoad		:	function(){}
+		,onShow		:	function(){}
+    ,onLeave		:	function(formData){ }
+	}
+</script>

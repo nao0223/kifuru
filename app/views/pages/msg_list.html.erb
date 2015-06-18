@@ -1,0 +1,79 @@
+<!-- ページコンテンツ:この内容がページ部分にロードされます -->
+
+<div class="col-xs-12 page-cont">
+	<div class="row">
+		<div class="head">
+      <div class="title"><%= t('msglist.title') %></div>
+		</div>
+
+    <% if @new_confesses.empty? && @old_confesses.empty? %>
+      <%= t('msglist.nomsg') %>
+    <% else %>
+      <ul class="col-xs-12 msg-list list-select-and-next">
+      <% unless @new_confesses.empty? %>
+        <li class="row list-head"><%= t('msglist.new') %></li>
+        <% @new_confesses.each do |view_set| %>
+        <li class="row list-item">
+          <span class="confess-id" style="display: none"><%= view_set[:confess].id %></span>
+          <div class="col-xs-2">
+            <img class="sns-icon mid" src="<%= view_set[:relation].image_url %>">
+          </div>
+          <div class="col-xs-8">
+            <div class="msg-to"><%= I18n.t('msglist.to', name: view_set[:relation].name) %></div>
+            <div class="msg-subject"><%= view_set[:confess].title %></div>
+          </div>
+          <div class="col-xs-2">
+            <div class="msg-status msg-status-unread"><%= show_status_by_confess(view_set[:confess]) %></div>
+          </div>
+        </li>
+        <% end %>
+      <% end %>
+
+      <% unless @old_confesses.empty? %>
+        <li class="row list-head"><%= t('msglist.old') %></li>
+        <% @old_confesses.each do |view_set| %>
+        <li class="row list-item">
+          <span class="confess-id" style="display: none"><%= view_set[:confess].id %></span>
+          <div class="col-xs-2">
+            <img class="sns-icon mid" src="<%= view_set[:relation].image_url %>">
+          </div>
+          <div class="col-xs-8">
+            <div class="msg-to"><%= I18n.t('msglist.to', name: view_set[:relation].name) %></div>
+            <div class="msg-subject"><%= view_set[:confess].title %></div>
+          </div>
+          <div class="col-xs-2">
+            <div class="msg-status msg-status-unread"><%= show_status_by_confess(view_set[:confess]) %></div>
+          </div>
+        </li>
+        <% end %>
+      <% end %>
+
+      </ul>
+    <% end %>
+
+    </div>	
+</div>
+
+<!-- ページスクリプト -->
+<script type="text/javascript">
+	//必要なハンドラだけ実装して下さい
+	pages["msg-list"]	= {
+		 onLoad		:	function(){}
+		,onShow		:	function(){}
+		,onLeave		:	function(formData){
+			formData["selected_id"]		=  $(".list-item.selected .confess-id").html();
+		}
+	};
+
+	  //選択リスト
+	  $("#msg-list")
+		  .find(".list-select-and-next .list-item").click(function(){
+			  $(this).siblings(".list-item").removeClass("selected");
+			  $(this).addClass("selected");
+			  var msgType		= "";
+			  app.base.showPage('show-msg-sent'); //選択して次のページへ
+		  })
+	  ;
+
+
+</script>

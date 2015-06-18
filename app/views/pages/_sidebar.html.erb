@@ -1,0 +1,9 @@
+	    <div class="sns">
+		    <img class="sns-icon mid" src="<%= current_user.image_url %>">
+		    <div class="sns-id">@<%= current_user.screen_name %></div>
+	    </div>
+ <ul>
+ 	<li><a href="/#select-template"><%= t('sidebar.send_msg') %></a></li>
+ 	<li><a href="/msgbox"><%= t('sidebar.view_msg') %></a></li>
+ 	<li><a href="account"><%=t('sidebar.setting')  %></a></li>
+ </ul>

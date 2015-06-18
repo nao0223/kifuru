@@ -1,0 +1,85 @@
+<!-- ページコンテンツ:この内容がページ部分にロードされます -->
+<div class="col-xs-12 page-cont">
+    <div class="row">
+	    <div class="head">
+        <div class="title"><%= t('account.title') %></div>
+	    </div>
+	    <div class="sns">
+        <img class="sns-icon mid" src="<%= current_user.image_url %>">
+        <div class="sns-id">@<%=current_user.screen_name %></div>
+	    </div>
+
+	    <div class="form-horizontal">
+		    <div class="form-group">
+          <label for="page0-myname" class="col-xs-4 col-xs-offset-1 control-label"><%= t('account.name') %></label>
+			    <div class="col-xs-6">
+            <input id="page0-myname" type="text" class="form-control" value="<%= current_user.name %>" />
+			    </div>
+		    </div>
+		    <div class="form-group">
+			    <div class="col-xs-10 col-xs-offset-1">
+				    <div class="btn-group" id="callme-list">
+              <a class="list-item btn btn-primary active" href="javascript:void(0)"><%= t('callme.a') %></a>
+              <a class="list-item btn btn-primary" href="javascript:void(0)"><%= t('callme.b') %></a>
+              <a class="list-item btn btn-primary" href="javascript:void(0)"><%= t('callme.c') %></a>
+              <a class="list-item btn btn-primary" href="javascript:void(0)"><%= t('callme.d') %></a>
+				    </div>
+			    </div>
+		    </div>
+	    </div>
+    </div>	
+    <input type="button" class="btn-info btn" value="<%= t('account.update') %>" id="update-action" />
+  <input type="hidden" value="<%= t('account.updated') %>" id="success_msg" />
+  <input type="hidden" value="<%= t('account.noupdated') %>" id="fail_msg" />
+  <input type="hidden" value="<%= current_user.call_me %>" id="callme" />
+</div>
+
+<!-- ページスクリプト -->
+<script type="text/javascript">
+	//必要なハンドラだけ実装して下さい
+	pages["profile"]	= {
+    onLoad		:	function(){
+      if ($("#callme").val().length > 0) {
+        $("#callme-list") .find(".list-item").siblings(".list-item").removeClass("active");
+        var listItems = $("#callme-list .list-item");
+        for (var i = 0; i < listItems.length; i++) {
+          if ($(listItems[i]).html() == $("#callme").val()) {
+            $(listItems[i]).addClass("active");
+          }
+        }
+      }
+    }
+		,onShow		:	function(){}
+		,onLeave		:	function(formData){}
+	}
+
+	  //選択リスト
+	  $("#callme-list")
+		  .find(".list-item").click(function(){
+			  $(this).siblings(".list-item").removeClass("active");
+			  $(this).addClass("active");
+		  });
+
+    $("#update-action").click(function() {
+       $.ajax({
+         type		:	"post"
+        ,data		:	{
+          "name": $("#page0-myname").val(),
+          "callme": $("#callme-list .active").html()
+         }
+        ,url		:	"/api/account"
+        ,error		:	function(XMLHttpRequest, textStatus, errorThrown){
+          console.log("failed to fetch api");
+        }
+        ,success	:	function(data){
+          console.log(data);
+          if (data.result == "ok") {
+            alert($("#success_msg").val());
+          } else if (data.result == "ng") {
+            alert($("#fail_msg").val() + data.msg);
+          }
+      }
+      });
+    });
+
+</script>

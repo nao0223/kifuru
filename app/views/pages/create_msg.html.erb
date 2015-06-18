@@ -1,0 +1,136 @@
+<!-- ページコンテンツ:この内容がページ部分にロードされます -->
+<div class="col-xs-12 page-cont page-cont">
+    <div class="navi-prev white-icon"></div>
+    <div class="row">
+	    <div class="head">
+		    <div class="title"><%= t('createmsg.title') %></div>
+	    </div>
+	    
+		<div class="switch-list" style="margin-top:-20px;">
+			<div class="col-xs-6"><a id="casual-mode" class="btn btn-default" href="#fakelink"><%= t('createmsg.casual') %></a></div>
+			<div class="col-xs-6"><a id="serious-mode" class="btn btn-primary" href="#fakelink"><%= t('createmsg.serious') %></a></div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="get-message" ><%= @theme %></div>
+		<div class="for_debug_mode"></div>
+		<div class="create-message"><%= @poem %></div>
+
+
+	    <!-- ハッカソンのプロトからコピー -->
+		<!-- <div id="learn" class="energy">
+		    <canvas id="learn-graph2" width="250" height="170"></canvas>
+		    <canvas id="learn-stage" width="250" height="1000"></canvas>
+	    </div> -->
+	    
+    </div>	
+    <div class="navi-next white-icon"></div>
+</div>
+
+<!-- ページスクリプト -->
+<script type="text/javascript">
+	//必要なハンドラだけ実装して下さい
+	pages["create-msg"]	= {
+		 onLoad		:	function(){
+			//graphDemo.jsのグラフ表示メソッドをコール
+			window.setTimeout(startLearn,800);
+		}
+		,onShow		:	function(){}
+		,onLeave		:	function(formData){}
+	}
+
+/* 右矢印をクリックした時の挙動 */
+/*
+	$('#navi-right').click(function(){
+
+		if( mode == 'casual' )
+		{
+			if( theme == 'love' )
+			{
+				if( loveNum == 1 )
+				{ 
+					loveNum == 2 
+				}
+				if( loveNum == 2 ){ loveNum == 3 }
+				if( loveNUm == 3 ){ loveNum == 1 }
+			}
+		}
+	});
+
+	$('#navi-left').click(function(){
+
+	});
+*/
+/* テーマの取得 */
+	var theme = $('.get-message').text();
+	var loveNum = 0;
+/* モードクリック時の処理  */
+	$('#casual-mode').click(function(){
+		var mode = 'casual';
+		
+		$('.for_debug_mode').text("casual");
+		
+		if(theme == "love")
+		{
+			$('.create-message').text("<%= t('createmsg.poem.confess.love.casual.poem1') %>");
+			loveNum = 1;
+		}
+		else if(theme == "date")
+		{
+			$('.create-message').text("<%= t('createmsg.poem.sorry.tellme.casual.poem1') %>");
+		}
+		else if(theme == "propose")
+		{
+			$('.create-message').text("<%= t('createmsg.poem.sorry.drink.casual.poem1') %>");
+		} 
+		else if(theme == "late")
+		{
+			$('.create-message').text("<%= t('createmsg.poem.sorry.kind.casual.poem1') %>");
+		}
+		else if(theme == "forget")
+		{
+			$('.create-message').text("<%= t('createmsg.poem.sorry.rest.casual.poem1') %>");
+		}
+
+     });
+
+
+/* シリアスモードクリック時の処理  */
+	$('#serious-mode').click(function(){
+
+		var mode = 'serious';
+
+		$('.for_debug_mode').text("serious");
+
+		if(theme == "love")
+		{
+			$('.create-message').text("<%= t('createmsg.poem.confess.love.serious.poem1') %>");
+		}
+		else if(theme == "date")
+		{
+			$('.create-message').text("<%= t('createmsg.poem.sorry.tellme.serious.poem1') %>");
+		}
+		else if(theme == "propose")
+		{
+			$('.create-message').text("<%= t('createmsg.poem.sorry.drink.serious.poem1') %>");
+		} 
+		else if(theme == "late")
+		{
+			$('.create-message').text("<%= t('createmsg.poem.sorry.kind.serious.poem1') %>");
+		}
+		else if(theme == "forget")
+		{
+			$('.create-message').text("<%= t('createmsg.poem.sorry.rest.serious.poem1') %>");
+		}
+	});
+
+
+
+</script>
+
+<!-- モックアップ用グラフ -->
+<script src="js/Chart.js"></script>
+<script src="http://code.createjs.com/createjs-2013.12.12.min.js"></script>
+<script src="js/graphDemo.js"></script>
+

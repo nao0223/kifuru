@@ -1,0 +1,496 @@
+/* 標準スタイルの上書き */
+.form-horizontal label{
+	text-align			:	right;
+	padding-left		:	5px;
+	padding-right		:	5px;
+}
+.form-horizontal .form-horizontal{
+	margin				:	auto;
+}
+
+/* 変数 */
+@bgcolor		:	rgb(0,169,140);
+
+/* mixinの定義 */
+
+.shadow(@size:33px){
+/* box-shadow */
+box-shadow:rgba(21,27,36, 0.65098) 0px 0px @size 0px;
+-webkit-box-shadow:rgba(21,27,36, 0.65098) 0px 0px @size 0px;
+-moz-box-shadow:rgba(21,27,36, 0.65098) 0px 0px @size 0px;
+}
+
+.round(@radius: 10px){
+/* border-radius */
+border-radius:@radius;
+-webkit-border-radius:@radius;
+-moz-border-radius:@radius;
+}
+
+.round-b(@radius: 10px){
+/* border-radius */
+border-radius:0 0 @radius @radius;
+-webkit-border-radius:0 0 @radius @radius;
+-moz-border-radius:0 0 @radius @radius;
+}
+
+.bg{
+	background-color	:	@bgcolor;
+	/*background-image	:	url(../img/greenbg.jpg);*/
+	
+}
+
+.template-bg{
+		background			:	url(../img/p_energy_l.jpg);
+		background-position	:	center bottom;
+		background-size		:	cover;
+		color				:	white;
+}
+
+.sns-icon-with-size(@size:140px){
+	width			:	@size;
+	height			:	@size;
+	.shadow(@size/5);
+	.round(@size/2);
+	border			:	@size/20 solid white;
+}
+
+/** Loading  */
+#loading {
+  width: 96px;
+  height: 96px;
+  margin: -68px 0 0 -68px;
+  padding: 20px;
+  background: #BABABA; 
+  opacity: 0.5;
+  border-radius: 15px;
+  position: fixed;
+  left: 50%; 
+  top: 50%;
+}
+
+
+/* サイドバー */
+#sidebar-opener{
+	position			:	fixed;
+	top					:	10px;
+	left				:	10px;
+	width				:	40px;
+	height				:	40px;
+	background			:	url(../img/icons/menu.png) center no-repeat;
+	z-index				:	2;
+}
+#sidebar{
+	background			:	white;
+}
+
+/* コンテナとページ */
+body{
+	overflow		:	hidden;
+}
+
+.container{
+}
+
+.note{
+	font-size		:	11pt;
+}
+
+.page{
+	position		:	relative;
+	padding			:	30px;
+}
+
+.page .head{
+	height			:	100px;
+	/*background	:	url(../img/titlebg.png);*/
+	background		:	rgb(0,140,110);
+	background-repeat:	no-repeat;
+}
+.page .head .title{
+	padding	:	35px 20px 20px 20px;
+	font-size		:	18pt;
+	color			:	white;
+}
+
+.page-cont{
+	height			:	100%;
+	position		:	relative;
+	border			:	0px solid gray;
+	.shadow();
+	background		:	white;
+}
+
+.page-cont-nobg{
+	height			:	100%;
+	position		:	relative;
+	color			:	white;
+}
+
+.page .navi-prev{
+	width			:	100%;
+	height			:	40px;
+	background-image	:	url(../img/icons/navi-prev.png);
+	background-position	:	center;
+	background-repeat	:	no-repeat;
+	position			:	absolute;
+	top					:	0;
+	left				:	0;
+}
+.page .navi-prev.white-icon{
+	background-image	:	url(../img/icons/navi-prev-w.png);
+}
+
+.page .navi-next{
+	width			:	100%;
+	height			:	40px;
+	background-image	:	url(../img/icons/navi-next.png);
+	background-position	:	center;
+	background-repeat	:	no-repeat;
+	position			:	absolute;
+	bottom					:	0;
+	left				:	0;
+}
+.page .navi-next.white-icon{
+	background-image	:	url(../img/icons/navi-next-w.png);
+}
+
+
+#row-foot{
+	min-height		:	60px;
+}
+
+.row.row-h3{
+	height			:	170px;
+}
+.row.row-h6{
+	height			:	340px;
+}
+
+.sns{
+	text-align		:	center;
+	margin			:	20px;
+}
+.sns-icon{
+	.sns-icon-with-size();
+	margin-bottom		:	20px;
+}
+
+.switch-list{
+	margin				:	0;
+	padding				:	0;
+	div{
+		margin				:	0;
+		padding				:	0;
+	}
+	.btn{
+		display			:	block;
+		.round(0);
+	}
+}
+
+.no-padding{
+	padding				:	0;
+}
+
+/* ページ毎のスタイル */
+
+#toppage{
+	background			:	url(../img/titleimg-flat.gif);
+	background-size		:	contain;
+	background-position	:	center bottom;
+	background-repeat	:	no-repeat;
+	
+	.navi-next{
+		width				:	100%;
+		height				:	170px;
+		background-image	:	none !important;
+		position			:	absolute;
+		bottom				:	0;
+		left				:	0;
+	}
+
+	.page-cont-top{
+		.subtitle{
+			font-size		:	8pt;
+			text-align		:	center;
+			letter-spacing	:	0.8em;
+			display			:	none;
+		}
+		.title{
+			font-size		:	16pt;
+			text-align		:	center;
+			display			:	none;
+		}
+	}
+}
+
+#select-template{
+	.theme-list{
+		list-style-type		:	none;
+		margin				:	0;
+		padding				:	0;
+		overflow			:	scroll;
+		
+	}
+	.theme-list .list-head{
+		color				:	gray;
+		font-size			:	12px;
+		padding				:	10px 5px 5px 10px;
+	}
+	.theme-list .list-item{
+		height				:	50px;
+		padding				:	5px 20px 5px 40px;
+		background-position	:	center bottom;
+		text-align			:	left;
+		font-size			:	14pt;
+		border				:	1px solid #ddd;
+	}
+	.theme-list .list-item+.list-item{
+		margin				:	-1px 0 0 0;
+	}
+	.theme-list .list-item.selected{
+		background			:	@bgcolor;
+		color				:	white;
+	}
+}
+
+
+
+#create-msg{
+	.page-cont{
+		.template-bg();
+	}
+	#learn-graph2{
+		position			:	absolute;
+		top					:	140px;
+		left				:	5px;
+	}
+	#learn-stage{
+		position			:	absolute;
+		top					:	120px;
+		left				:	5px;
+	}
+}
+
+#send-msg{
+	.page-cont{
+		.template-bg();
+	}
+	#send-msg-dosend{
+		height				:	200px;
+		background			:	transparent;
+		color				:	white;
+		border				:	3px solid white;
+		font-size			:	24pt;
+		margin-top			:	60px;
+		text-shadow: 0px 4px 20px black;
+	}
+}
+
+
+#msg-list{
+	.msg-list{
+		list-style-type		:	none;
+		margin				:	0;
+		padding				:	0;
+		overflow			:	scroll;
+		
+	}
+	.msg-list .list-head{
+		color				:	gray;
+		font-size			:	12px;
+		padding				:	10px 5px 5px 30px;
+	}
+	.msg-list .list-item{
+		height				:	50px;
+		padding				:	5px 15px 5px 15px;
+		background-position	:	center bottom;
+		text-align			:	left;
+		font-size			:	14pt;
+		border				:	1px solid #ddd;
+		>div{
+			padding			:	0 5px;
+		}
+		.msg-to{
+			color				:	gray;
+			font-size			:	12px;
+			line-height			:	14px;
+		}
+		.msg-subject{
+			font-size			:	14px;
+			line-height			:	16px;
+		}
+		.msg-status{
+			width				:	32px;
+			height				:	48px;
+			color				:	gray;
+			font-size			:	10px;
+			padding-top			:	25px;
+			vertical-align		:	bottom;
+			text-align			:	center;
+		}
+		.msg-status-unread{
+			background			:	url(../img/icons/mail-unread.png) center top no-repeat;
+			background-size		:	contain;
+		}
+		.msg-status-read{
+			background			:	url(../img/icons/mail-read.png) center top no-repeat;
+			background-size		:	contain;
+		}
+	}
+	.msg-list .list-item{
+		margin				:	-1px 0 0 0;
+	}
+	.msg-list .list-item.selected{
+		background			:	@bgcolor;
+		color				:	white;
+	}
+	.msg-list .list-item.selected *{
+		color				:	white;
+	}
+	.sns-icon{
+		.sns-icon-with-size(32px);
+		margin-bottom		:	0;
+	}
+}
+
+#show-msg-sent{
+	@btn-height			:	40px;
+	.page-cont{
+		padding-bottom		:	@btn-height*2;
+	}
+	.msg-cont{
+		overflow			:	scroll;
+		.row{
+			margin			:	0;
+			>div{
+				padding			:	0 5px;
+			}
+		}
+	}
+	.show-msg-body{
+		padding				:	10px;
+		border				:	1px solid gray;
+		.round(8px);
+		.shadow(4px);
+		p{
+			font-size			:	11pt;
+			line-height			:	12pt;
+		}
+	}
+	.sns-icon{
+		.sns-icon-with-size(40px);
+	}
+	.msg-head{
+		color				:	gray;
+		font-size			:	12px;
+		line-height			:	20px;
+		margin-top			:	20px;
+		padding-left		:	20px;
+	}
+	.msg-action{
+		position			:	absolute;
+		width				:	100%;
+		bottom				:	0;
+		.btn{
+			display			:	block;
+			height			:	@btn-height;
+			.round(0px);
+		}
+	}
+}
+
+#guest-top{
+	background			:	url(../img/titleimg-flat.gif);
+	background-size		:	contain;
+	background-position	:	center bottom;
+	background-repeat	:	no-repeat;
+	
+	.navi-next{
+		width				:	100%;
+		height				:	170px;
+		background-image	:	none !important;
+		position			:	absolute;
+		bottom				:	0;
+		left				:	0;
+	}
+	.notice-newmsg{
+		color				:	white;
+		text-align			:	center;
+		font-size			:	12pt;
+	}
+	.sns-icon{
+		.sns-icon-with-size(70px);
+	}
+}
+
+#guest-show-msg{
+	.page-cont{
+		.template-bg();
+	}
+	#learn-graph2{
+		position			:	absolute;
+		top					:	100px;
+		left				:	5px;
+	}
+	#learn-stage{
+		position			:	absolute;
+		top					:	80px;
+		left				:	5px;
+	}
+	.msg-action{
+		position			:	absolute;
+		width				:	100%;
+		bottom				:	0;
+		.btn{
+			display			:	block;
+			.round(0px);
+		}
+	}
+}
+
+#guest-reply-msg{
+	@btn-height			:	40px;
+	.page-cont{
+		padding-bottom		:	@btn-height*2;
+	}
+	.msg-cont{
+		overflow			:	scroll;
+	}
+	.show-msg-body{
+		padding				:	10px;
+		border				:	1px solid gray;
+		.round(8px);
+		.shadow(4px);
+		p{
+			font-size			:	11pt;
+			line-height			:	12pt;
+		}
+	}
+	.msg-body-reply{
+		width				:	100%;
+	}
+	.sns-icon{
+		.sns-icon-with-size(40px);
+	}
+	.msg-head{
+		color				:	gray;
+		font-size			:	12px;
+		line-height			:	20px;
+		margin-top			:	20px;
+		padding-left		:	20px;
+	}
+	.msg-action{
+		position			:	absolute;
+		width				:	100%;
+		bottom				:	0;
+		.btn{
+			display			:	block;
+			.round(0px);
+		}
+	}
+
+}
+
+	

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<title>メッセージボックス</title>
+		<!-- 共通要素のロード：最終的にテンプレートで埋め込むようにしてください -->
+		<script type="text/javascript" src="include/head.js"></script>
+  </head>
+	
+  <body class="bg">
+    <div class="container">
+
+	<!-- サイドバー -->
+	<div class="wrapper"></div>
+	<section id="sidebar" class="sidebar"></section>
+	<div id="sidebar-opener" class="menu-icon menu-button menu-left"></div>
+  
+<!--
+ページの構成
+
+このページは「親ページ」です。
+このhtml内の<div class="page" id="ページid">の要素が「子ページ」です。
+子ページは pages/ページid.html に入っています。子ページは画面を最初に表示する
+タイミング及び、次の画面に進むタイミングで自動的にロードされます。
+（前の画面に戻る場合には再ロードしないように制御しています）
+これらの画面制御はapp.jsを参照して下さい。
+
+・子ページを増やす方法
+1.親ページ内に<div class="page" id="ページid">の要素（プレースホルダ）を追加
+2.pagesディレクトリに子ページのhtmlを作成（「テンプレート.html」を複製すると便利）
+3.子ページのhtml及びscriptを編集。htmlのベースはbootstrapです。
+4.cssを編集。css/app.lessを編集して下さい。開発段階ではlessのコンパイルは不要です
+
+・親ページを増やす方法
+適当な親ページをコピーして下さい
+後は一緒
+
+・head内を修正したい
+「include」ディレクトリを見て下さい
+
+その他注意点
+・複数の子ページが親ページにロードされる性質上、子ページ間でhtml要素のid重複は不可です
+　ページid以外はできるだけclass属性を使って下さい
+・chromeのローカル環境ではlessやajaxが上手く動作しません
+　Macの場合、同梱の「ChromeWithLess.command」でchromeを起動するとこの制約を解除できます
+
+-->
+		<!-- トップページ -->
+		<div class="row page" id="toppage"></div>
+
+		<!-- なにを伝えますか？ -->
+		<div class="row page" id="select-template"></div>
+
+		<!-- 誰に伝えますか？：相手の情報 -->
+		<div class="row page" id="select-target"></div>
+
+		<!-- 環境問題を知る＆メッセージの設定 -->
+		<div class="row page" id="create-msg"></div>
+		
+		<!-- メッセージ送信 -->
+		<div class="row page" id="send-msg"></div>
+
+		<div id="row-foot"></div><!-- ←今のところ使ってないです -->
+    </div>
+
+		<!-- 共通要素のロード：最終的にテンプレートで埋め込むようにしてください -->
+		<script type="text/javascript" src="include/body-last.js"></script>
+
+
+  </body>
+</html>

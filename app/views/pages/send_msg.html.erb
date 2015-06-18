@@ -1,0 +1,48 @@
+<!-- ページコンテンツ:この内容がページ部分にロードされます -->
+<div class="col-xs-12 page-cont page-cont-learn">
+    <div class="navi-prev white-icon"></div>
+    <div class="row">
+	    <div class="head">
+		    <div class="title"><%= t('sendmsg.title') %></div>
+	    </div>
+	    
+	    <div class="col-xs-10 col-xs-offset-1">
+		    <button id="send-msg-dosend" class="form-control"><%= t('sendmsg.msg', name: session[:name]) %></button>
+		    <p class="note"><%= t('sendmsg.sub', screen_name: session[:screen_name]) %></p>
+	    </div>
+	    
+    </div>	
+</div>
+
+<input type="hidden" value="<%= t('sendmsg.success') %>" id="success_msg" />
+<input type="hidden" value="<%= t('sendmsg.fail') %>" id="fail_msg" />
+
+<!-- ページスクリプト -->
+<script type="text/javascript">
+	//必要なハンドラだけ実装して下さい
+pages["send-msg"]	= {
+  onLoad		:	function(){
+	  $("#send-msg-dosend").click(function(){
+      $.ajax({
+         type		:	"post"
+        ,data		:	null
+        ,url		:	"/api/dm"
+        ,error		:	function(XMLHttpRequest, textStatus, errorThrown){
+          console.log("failed to fetch api");
+        }
+        ,success	:	function(data){
+          console.log(data);
+          if (data.result == "ok") {
+            alert($("#success_msg").val());
+          } else if (data.result == "ng") {
+            alert($("#fail_msg").val() + data.msg);
+          }
+          app.base.showPage("toppage");
+        }
+      });
+    });
+  }
+  ,onShow		:	function(){}
+  ,onLeave		:	function(formData){}
+}
+</script>

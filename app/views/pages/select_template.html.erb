@@ -1,0 +1,46 @@
+<!-- ページコンテンツ:この内容がページ部分にロードされます -->
+
+<div class="col-xs-12 page-cont">
+    <div class="navi-prev white-icon"></div>
+    <div class="row">
+	    <div class="head">
+        <div class="title"><%= t('selectpage.title') %></div>
+	    </div>
+
+	    <ul class="theme-list list-select-and-next">
+		    <li class="list-head"><%= t('selectpage.confess.title') %></li>
+        <li class="list-item" name="love"><%= t('selectpage.love') %></li>
+        <li class="list-item" name="date"><%= t('selectpage.date') %></li>
+        <li class="list-item" name="propose"><%= t('selectpage.propose') %></li>
+
+        <li class="list-head" name="sorry"><%= t('selectpage.sorry.title') %></li>
+        <li class="list-item" name="late"><%= t('selectpage.late') %></li>
+        <li class="list-item" name="forget"><%= t('selectpage.forget') %></li>
+
+	    </ul>
+
+    </div>	
+</div>
+
+<!-- ページスクリプト -->
+<script type="text/javascript">
+	//必要なハンドラだけ実装して下さい
+	pages["select-template"]	= {
+		 onLoad		:	function(){}
+		,onShow		:	function(){}
+		,onLeave		:	function(formData){
+			formData["theme"]		=  $("#select-template .selected").eq(0).attr("name");
+		}
+	};
+
+	  //選択リスト
+	  $("#select-template")
+		  .find(".list-select-and-next .list-item").click(function(){
+			  $(this).siblings(".list-item").removeClass("selected");
+			  $(this).addClass("selected");
+			  app.base.pageNext(this); //選択して次のページへ
+		  })
+	  ;
+
+
+</script>

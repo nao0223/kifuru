@@ -1,0 +1,130 @@
+ja:
+  sidebar:
+    send_msg:  'メッセージを送'
+    view_msg:  'メッセージ一覧'
+    setting:   '設定'
+  toppage:
+    title: 'Green de Love Confession'
+    subtitle: '私の想いが地球を変える'
+  selectpage:
+    title: '何を伝える？？'
+    confess:
+      title: '告白する'
+ 
+    sorry:
+      title: 'あやまる'
+    love: 'お前が好きだ！'
+    date: 'デートして＞＜'
+    propose: '結婚して下さい！' 
+    late: '遅刻します'
+    forget: '忘れてました'
+  selecttarget:
+    title: '誰に伝えますか？'
+    name: 'なまえ'
+    search: '検索'
+  createmsg:
+    title: 'メッセージを選択'
+    mode:
+      casual: 'カジュアル'
+      serious: '本気'
+    poem:
+      sorry:
+        late:
+          casual:
+            poem1: 'late casual poem1 渋滞で地球温暖化してました。別の方法で歩きます。遅れ申し訳ないです！'
+            poem2: 'late casual poem2'
+            poem3: 'late casual poem3'
+          serious:
+            poem1: 'late serious poem1 磁気嵐な状況あるので収まるまで様子見します。少し遅れます！'
+            poem2: 'late serious poem2'
+            poem3: 'late serious poem3'
+        rest:
+          casual:
+            poem1: 'rest casual poem1 実家の生物多様性の課題に取り組みます。明日は会社休みます。申し訳ないです！！'
+            poem2: 'rest casual poem2'
+            poem3: 'rest casual poem3'
+          serious:
+            poem1: 'rest serious poem1 生物多様性の話で、異性の友達の悩み相談を受けています。申し訳ないです！'
+            poem2: 'rest serious poem2'
+            poem3: 'rest serious poem3'
+        tellme:
+          casual:
+            poem1: 'tellme casual poem1 一人で地球温暖化してます。例のプロジェクトの件、一緒に考えてください。申し訳ないです。'
+            poem2: 'tellme casual poem2'
+            poem3: 'tellme casual poem3'
+          serious:
+            poem1: 'tellme serious poem1 仕事の進め方がわからなくなりました。オゾン層でリフレッシュしたいです。話聞いてください。'
+            poem2: 'tellme serious poem2'
+            poem3: 'tellme serious poem3'
+        drink:
+          casual:
+            poem1: 'drink casual poem1 PM2.5を考えたいです。プロジェクトが一段落したら、職場の空気について飲み会企画してください。'
+            poem2: 'drink casual poem2'
+            poem3: 'drink casual poem3'
+          serious:
+            poem1: 'drink serious poem1 リサイクルで、使えるものは使っていこうと思ってました。今度飲み会しましょう。'
+            poem2: 'drink serious poem2'
+            poem3: 'drink serious poem3'
+        kind:
+          casual:
+            poem1: 'kind casual poem1 地球温暖化を防止したいと思ってます。少しは休め。よろしく。'
+            poem2: 'kind casual poem2'
+            poem3: 'kind casual poem3'
+          serious:
+            poem1: 'kind serious poem1'
+            poem2: 'kind serious poem2'
+            poem3: 'kind serious poem3'
+      confess:
+        love:
+          casual:
+            poem1: 'love casual poem1 8000年前から森林は80%が消滅した。俺は消滅しない。俺はお前が好きだ。'
+            poem2: 'love casual poem2'
+            poem3: 'love casual poem3'
+          serious:
+            poem1: 'love serious poem1 地球は太陽が爆発していつかは消滅する。それでも俺はお前が好きだ。'
+            poem2: 'love serious poem2 地球の地軸が傾く。ポールシフトという現象がある。俺はお前にシフトした。'
+            poem3: 'love serious poem3'
+  sendmsg:
+    title: '寄付して伝える！'
+    msg: '俺は%{name}が好きだ！'
+    sub: 'クリックで@%{screen_name}にDMを飛ばします'
+    success: 'DMを送信しました。'
+    fail: 'DMの送信に失敗しました。理由：'
+  guesttop:
+    msg: '%{from}さんから%{to}さんにメッセージが届いています'
+  guestshowmsg:
+    title: 'メッセージ'
+    accept: '受け入れる'
+    reject: '拒否する'
+  guestreply:
+    title: 'メッセージに返信'
+    replyto: '%{name}さんに返信'
+    send: '送信'
+  msglist:
+    title: 'メッセージボックス'
+    new: '新着メッセージ'
+    old: 'すべてのメッセージ'
+    to: '%{name}さんへ'
+    nomsg: 'メッセージがありません。'
+    status:
+      waiting: '返信待ち'
+      noreply: '未返信'
+      hasreply: '返信有り'
+      replied: '返信済み'
+  showmsgsent:
+    title: '送信済みメッセージ'
+    reply: '%{name}さんからの返信'
+    tweetcon: '寄付してツイート'
+    tweet: 'ツイート'
+  account:
+    title: '設定'
+    name: 'なまえ'
+    update: '更新'
+    updated: '更新しました'
+    noupdated: '更新に失敗しました'
+  callme:
+    a: '俺'
+    b: '私'
+    c: '僕'
+    d: 'うち'
+
